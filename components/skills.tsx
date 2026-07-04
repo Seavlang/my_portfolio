@@ -1,13 +1,14 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
+import { Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 import { fadeInUp, scaleIn, staggerContainer, viewportConfig } from "@/lib/motion"
 import {
   SiJavascript, SiReact, SiNextdotjs, SiHtml5, SiTailwindcss,
   SiGit, SiGooglecloud, SiDocker, SiLinux, SiPython,
   SiOpenjdk, SiSpringboot, SiPostgresql,
-  SiPuppeteer, SiTensorflow, SiOpenai,
+  SiPuppeteer, SiTensorflow,
   SiClaude, SiAnthropic,
 } from "react-icons/si"
 import type { IconType } from "react-icons"
@@ -64,7 +65,7 @@ const skills: Skill[] = [
   { name: "Excel",              bg: "from-green-600  to-emerald-700", category: "Data Analytics",  iconDef: { custom: true, component: ExcelIcon } },
   { name: "Web Scraping",       bg: "from-purple-500 to-violet-600",  category: "Data Analytics",  iconDef: { Icon: SiPuppeteer,   color: "#40B5A4" } },
   { name: "Machine Learning",   bg: "from-orange-500 to-amber-600",   category: "Data Analytics",  iconDef: { Icon: SiTensorflow,  color: "#FF6F00" } },
-  { name: "Prompt Engineering", bg: "from-violet-500 to-purple-600",  category: "AI / LLM",        iconDef: { Icon: SiOpenai,      color: "#ffffff" } },
+  { name: "Prompt Engineering", bg: "from-violet-500 to-purple-600",  category: "AI / LLM",        iconDef: { custom: true, component: ({ size }) => <Sparkles size={size} color="#ffffff" /> } },
   { name: "Claude AI",          bg: "from-[#CC785C] to-[#B5541B]",   category: "Anthropic",        iconDef: { Icon: SiClaude,      color: "#ffffff" } },
   { name: "AI Agents",          bg: "from-[#D4956A] to-[#CC785C]",   category: "Anthropic",        iconDef: { Icon: SiAnthropic,   color: "#ffffff" } },
   { name: "MCP",                bg: "from-[#B5541B] to-[#8B3A0F]",   category: "Anthropic",        iconDef: { Icon: SiAnthropic,   color: "#ffffff" } },
