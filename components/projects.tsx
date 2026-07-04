@@ -2,9 +2,27 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Figma, Award, X } from "lucide-react"
+import { ExternalLink, Award, X } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer, viewportConfig } from "@/lib/motion"
+
+function GithubIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+    </svg>
+  )
+}
+
+function FigmaIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.491 4.49-4.491h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117v-6.039H8.148zm4.587 15.019c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.491 4.49-4.491c2.476 0 4.49 2.014 4.49 4.491s-2.014 4.49-4.49 4.49zm0-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.355-3.019-3.019-3.019zm0-1.471c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.491 4.49-4.491 4.49 2.014 4.49 4.491-2.014 4.49-4.49 4.49zm0-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.355-3.019-3.019-3.019z" />
+    </svg>
+  )
+}
 
 const projects = [
   {
@@ -76,6 +94,29 @@ const projects = [
     featured: true,
     projectType: "New Basic Course Project",
     year: "2025"
+  },
+  {
+    title: "Dombon Knhom (តំបន់ខ្ញុំ)",
+    description: "A modern web ecosystem designed to enhance local event discovery and community engagement across Cambodia, developed by 14th generation Basic Course students at KSHRD under my leadership. Dombon Knhom gives everyday users an interactive map view to explore local activities and a localized social feed to share experiences, while a gamified badge system encourages active participation. Event creators can draft events and provincial moderators review and approve content through a multi-role workflow, built on Next.js, Spring Boot, and PostgreSQL for a scalable, secure platform.",
+    image: "/images/dombonknhom.png",
+    technologies: ["Next.js", "Spring Boot", "PostgreSQL", "REST APIs", "Role-based Access", "Interactive Maps", "Project Leadership"],
+    githubUrl: "https://github.com/14th-Gen-Basic-Course-Final-Project/Dombon-Khnom-UI.git",
+    figmaUrl: "https://www.figma.com/design/O35Zf5jhk8h00dkqjqJaCC/%E1%9E%8F%E1%9F%86%E1%9E%94%E1%9E%93%E1%9F%8B%E1%9E%81%E1%9F%92%E1%9E%89%E1%9E%BB%E1%9F%86?node-id=2535-63343&t=04Axp5nK39rYQjCa-1",
+    liveUrl: "https://dombonknhom.kshrd.app/",
+    featured: true,
+    projectType: "14th Generation Basic Course Project",
+    year: "2026"
+  },
+  {
+    title: "Cognito",
+    description: "A project built to apply hands-on skills from an intensive AI training course on the Claude ecosystem — covering Claude Skills, Sub-agents, Hooks, and the Model Context Protocol (MCP). Cognito was conceived, built, and deployed within a 2-day sprint, exploring agentic workflows and automated tool-use patterns powered by Claude.",
+    image: "/images/cognito.png",
+    technologies: ["Claude", "Claude Skills", "Sub-agents", "MCP", "Hooks", "Agentic AI"],
+    githubUrl: "https://github.com/orgs/ai-group03/repositories",
+    liveUrl: "https://cognito.kshrd.app/",
+    featured: true,
+    projectType: "AI Training Project",
+    year: "2026"
   }
 ]
 
@@ -111,7 +152,13 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 px-4 bg-gradient-to-br from-green-50 via-white to-yellow-50">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 border border-yellow-200 rounded-full text-sm font-medium text-green-800 mb-6">
             Featured Projects
           </div>
@@ -122,11 +169,20 @@ export function Projects() {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Projects that showcase my development from student to instructor at Korea Software HRD Center
           </p>
-        </div>
-        
-        <div className="grid gap-6">
+        </motion.div>
+
+        <motion.div
+          className="grid gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportConfig}
+        >
           {projects.map((project, index) => (
-            <div key={index} className={`group relative bg-white rounded-2xl transition-all duration-300 hover:translate-y-[-4px] ${
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className={`group relative bg-white rounded-2xl transition-all duration-300 hover:translate-y-[-4px] ${
               index === 0 ? 'shadow-lg shadow-yellow-200/40 border border-yellow-200' : 'shadow-md shadow-gray-200/40 border border-gray-100'
             } hover:shadow-xl hover:shadow-gray-300/20 overflow-hidden backdrop-blur-sm`}>
               
@@ -230,13 +286,21 @@ export function Projects() {
                           'bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white'
                         }`} asChild>
                           <a href={project.figmaUrl} target="_blank" rel="noopener noreferrer">
-                            <Figma className="h-3 w-3" />
+                            <FigmaIcon className="h-3 w-3" />
                             Design
                           </a>
                         </Button>
                       )}
+                      {(project as { liveUrl?: string }).liveUrl && (
+                        <Button size="sm" className="gap-1 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200" asChild>
+                          <a href={(project as { liveUrl?: string }).liveUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-3 w-3" />
+                            Visit
+                          </a>
+                        </Button>
+                      )}
                       {index === 0 && (
-                        <Button 
+                        <Button
                           size="sm"
                           className="gap-1 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-white shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
                           onClick={() => setShowAcademateAchievements(true)}
@@ -298,18 +362,16 @@ export function Projects() {
               
                       <Button size="sm" variant="outline" className="gap-1 border border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-gray-400 shadow-sm hover:shadow-md transition-all duration-200" asChild>
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-3 w-3" />
+                          <GithubIcon className="h-3 w-3" />
                           Code
                         </a>
                       </Button>
                     </div>
                   </div>
                 </div>
-              </div>
+            </motion.div>
           ))}
-        </div>
-        
-       
+        </motion.div>
 
 
         {/* Academate Achievement Popup Modal */}

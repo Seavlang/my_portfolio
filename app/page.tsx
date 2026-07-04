@@ -6,6 +6,7 @@ import { Education } from "@/components/education"
 import { Experience } from "@/components/experience"
 import { Projects } from "@/components/projects"
 import { Contact } from "@/components/contact"
+import { MotionFooter } from "@/components/motion-footer"
 
 export default function Home() {
   return (
@@ -21,13 +22,7 @@ export default function Home() {
       <Projects />
       <Contact />
       
-      <footer className="bg-background border-t py-8 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © 2025 Vey Seavlang. Built with Next.js 14, Tailwind CSS, and shadcn/ui.
-          </p>
-        </div>
-      </footer>
+      <MotionFooter />
     </main>
   )
 }
